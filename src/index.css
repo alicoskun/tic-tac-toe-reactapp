@@ -1,51 +1,104 @@
 body {
-    font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
-  }
-  
-  ol, ul {
-    padding-left: 30px;
-  }
-  
-  .board-row:after {
-    clear: both;
-    content: "";
-    display: table;
-  }
-  
-  .status {
-    margin-bottom: 10px;
-  }
-  
-  .square {
-    background: #fff;
-    /*border: 1px solid #999;*/
-    float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 34px;
-  }
-  
-  .square:focus {
-    outline: none;
-  }
-  
-  .kbd-navigation .square:focus {
-    background: #ddd;
-  }
-  
-  .game {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .game-info {
-    margin-left: 20px;
-  }
-  
+  font-size: 12px;
+  margin: 20px;
+  color: #979797;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin: 50px 0px;  
+  font-family: cursive;
+  font-size: 30px;
+  font-weight: bold;
+  color: #979797;
+}
+
+.square {
+  background: #afafaf;
+  border: 0px;
+  border-radius: 15px;
+  float: left;
+  line-height: 120px;
+  height: 120px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 0;
+  text-align: center;
+  width: 120px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.square:hover {    
+  background: #979797;
+  display: unset;
+}
+
+.square span {
+  font-family: cursive;
+  font-size: 60px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.square-x-user {
+  background: #38876f;
+  text-shadow: 1px 1px 3px rgb(32, 32, 32);
+}  
+.square-o-user {
+  background: #f0bb29;
+  text-shadow: 1px 1px 3px rgb(32, 32, 32);
+}
+
+.square-x-user:hover {
+  background: #38876f;
+}  
+
+.square-o-user:hover {
+  background: #f0bb29;
+}
+
+.next-user {
+  opacity: 0;
+  height: 120px;
+}
+
+.next-user:hover {
+  opacity: 1;
+}
+
+.next-user span {
+  color: #d8d8d8;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
+
+.game-board {
+  margin: auto;
+}
+
+.hidden {
+  display: none;
+}
