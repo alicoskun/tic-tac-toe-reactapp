@@ -6,7 +6,7 @@ export default class Square extends React.Component {
         // default order value is null
         // order is set 'X' or 'O' when button clicked
         // if it changes, update it
-        return this.props.order !== nextProps.order;
+        return true; // this.props.order !== nextProps.order;
     }
     render = () => {
 
