@@ -6,7 +6,7 @@ export default class Modal extends React.Component {
 
         return (
             <div className="modal-window" style={{display: visibility}}>
-                <a href="#modal-close" title="Close" className="modal-close">Close</a>
+                <a onClick={this.props.onCloseClick} title="Close" className="modal-close">Close</a>
                 <h1>{this.props.title}</h1>
                 <div>
                     <button onClick={this.props.onRestartClick}>Restart</button>
