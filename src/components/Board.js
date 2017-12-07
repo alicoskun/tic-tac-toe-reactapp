@@ -8,23 +8,27 @@ export default class Board extends React.Component {
         this.state = {
             squares: Array(9).fill(null),
             xIsNext: true,
-            modalVisible: false
+            modalVisible: false,
+            isOver: false,
+            status: 'Next player: X'
         };
     }
     restartGame = () => {
         this.setState({
             squares: this.state.squares.fill(null),
             xIsNext: true,
-            modalVisible: false
+            modalVisible: false,
+            isOver: false,
+            status: 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
         });
     }
-    showModal = () => {
-        console.log('showModal');
-        this.setState({
-            modalVisible: true
-        });
-    }
-    closeModal = () => {
+    // showModal = () => {
+    //     console.log('showModal');
+    //     this.setState({
+    //         modalVisible: true
+    //     });
+    // }
+    hideModal = () => {
         this.setState({
             modalVisible: false
         });
@@ -39,51 +43,62 @@ export default class Board extends React.Component {
         }
 
         squares[i] = this.state.xIsNext ? 'X' : 'O';
-        this.setState({
-            squares: squares,
-            xIsNext: !this.state.xIsNext
-        });
-    }
-    renderSquare = (i, isOver) => {
-        return <Square next={this.state.xIsNext} order={this.state.squares[i]} over={isOver}
-            onClick={() => this.handleClick(i)} />;
-    }
-    render = () => {
-        const winner = calculateWinner(this.state.squares);
-        let status;
-        let isOver = false;
+
+        // check if someone won the game on every click
+        const winner = calculateWinner(squares);
 
         if (winner) {
-            status = 'Winner: ' + winner;
-            isOver = true;
-            //this.showModal();
+            this.setState({
+                squares: squares,
+                status: 'Winner: ' + winner,
+                isOver: true,
+                modalVisible: true
+            });
+            
         } else {
-            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+            this.setState({
+                squares: squares,
+                xIsNext: !this.state.xIsNext,
+                status: 'Next player: ' + (!this.state.xIsNext ? 'X' : 'O')
+            });
         }
+    }
+    renderSquare = (i, isOver) => {
+        return <Square next={this.state.xIsNext} order={this.state.squares[i]} over={this.state.isOver}
+            onClick={() => this.handleClick(i)} />;
+    }
+    /*shouldComponentUpdate = () => {
+        return !this.state.modalVisible;
+    }*/
+    /*componentWillMount = () => {        
+        this.showModal();
+    }*/
+    render = () => {
+        
 
         return (
             <div>
                 <div>
-                    <div className="status">{status}</div>
+                    <div className="status">{this.state.status}</div>
                     <div className="board-row">
-                        {this.renderSquare(0, isOver)}
-                        {this.renderSquare(1, isOver)}
-                        {this.renderSquare(2, isOver)}
+                        {this.renderSquare(0)}
+                        {this.renderSquare(1)}
+                        {this.renderSquare(2)}
                     </div>
                     <div className="board-row">
-                        {this.renderSquare(3, isOver)}
-                        {this.renderSquare(4, isOver)}
-                        {this.renderSquare(5, isOver)}
+                        {this.renderSquare(3)}
+                        {this.renderSquare(4)}
+                        {this.renderSquare(5)}
                     </div>
                     <div className="board-row">
-                        {this.renderSquare(6, isOver)}
-                        {this.renderSquare(7, isOver)}
-                        {this.renderSquare(8, isOver)}
+                        {this.renderSquare(6)}
+                        {this.renderSquare(7)}
+                        {this.renderSquare(8)}
                     </div>
                     <span>tic tac toe</span>
                 </div>
                 <Modal title="Restart" visible={this.state.modalVisible}
-                    onRestartClick={this.restartGame} onCloseClick={this.closeModal}>
+                    onRestartClick={this.restartGame} onCloseClick={this.hideModal}>
                     <span>Would you like to restart the game?</span>
                 </Modal>
             </div>
