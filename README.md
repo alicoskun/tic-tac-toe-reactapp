@@ -1,6 +1,6 @@
 # Tic Tac Toe in React
 
-![Tic Tac Toe](https://raw.githubusercontent.com/alicoskun/tic-tac-toe-reactapp/master/tic-tac-toe.png)<br>
+![Tic Tac Toe](./tic-tac-toe.png)<br>
 
 A React implementation of Tic Tac Toe
 
