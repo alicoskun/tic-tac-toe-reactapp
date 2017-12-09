@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Itim');
+
 body {
+  font-family: 'Itim';
   font-size: 12px;
   margin: 20px;
-  color: #979797;
+  background: #282c34;
+  color: #777777;
 }
 
 ol, ul {
@@ -15,11 +19,9 @@ ol, ul {
 }
 
 .status {
-  margin: 50px 0px;  
-  font-family: cursive;
+  margin: 50px 0px;
   font-size: 30px;
-  font-weight: bold;
-  color: #979797;
+  color: #d4d4d4;
 }
 
 .square {
@@ -46,9 +48,8 @@ ol, ul {
 }
 
 .square span {
-  font-family: cursive;
+  font-family: 'Itim';
   font-size: 60px;
-  font-weight: bold;
   color: #ffffff;
 }
 
@@ -57,20 +58,20 @@ ol, ul {
 }
 
 .square-x-user {
-  background: #38876f;
+  background: #70c368;
   text-shadow: 1px 1px 3px rgb(32, 32, 32);
 }  
 .square-o-user {
-  background: #f0bb29;
+  background: #ffc34b;
   text-shadow: 1px 1px 3px rgb(32, 32, 32);
 }
 
 .square-x-user:hover {
-  background: #38876f;
+  background: #80c879;
 }  
 
 .square-o-user:hover {
-  background: #f0bb29;
+  background: #fac863;
 }
 
 .next-user {

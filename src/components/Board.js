@@ -19,15 +19,14 @@ export default class Board extends React.Component {
             xIsNext: true,
             modalVisible: false,
             isOver: false,
-            status: 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
+            status: 'Next player: X'
         });
     }
-    // showModal = () => {
-    //     console.log('showModal');
-    //     this.setState({
-    //         modalVisible: true
-    //     });
-    // }
+    showModal = () => {
+        this.setState({
+            modalVisible: true
+        });
+    }
     hideModal = () => {
         this.setState({
             modalVisible: false
@@ -51,9 +50,10 @@ export default class Board extends React.Component {
             this.setState({
                 squares: squares,
                 status: 'Winner: ' + winner,
-                isOver: true,
-                modalVisible: true
+                isOver: true
             });
+            
+            this.showModal();
             
         } else {
             this.setState({
@@ -67,15 +67,7 @@ export default class Board extends React.Component {
         return <Square next={this.state.xIsNext} order={this.state.squares[i]} over={this.state.isOver}
             onClick={() => this.handleClick(i)} />;
     }
-    /*shouldComponentUpdate = () => {
-        return !this.state.modalVisible;
-    }*/
-    /*componentWillMount = () => {        
-        this.showModal();
-    }*/
     render = () => {
-        
-
         return (
             <div>
                 <div>
@@ -97,9 +89,8 @@ export default class Board extends React.Component {
                     </div>
                     <span>tic tac toe</span>
                 </div>
-                <Modal title="Restart" visible={this.state.modalVisible}
+                <Modal winner={this.state.xIsNext} visible={this.state.modalVisible}
                     onRestartClick={this.restartGame} onCloseClick={this.hideModal}>
-                    <span>Would you like to restart the game?</span>
                 </Modal>
             </div>
         );
