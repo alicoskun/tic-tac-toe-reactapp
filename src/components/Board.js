@@ -49,14 +49,25 @@ export default class Board extends React.Component {
         const winner = calculateWinner(squares);
 
         if (winner) {
+            let winnerText = 'Winner: ' + winner;
+
+            // draw status
+            if (winner === '-') {
+                winnerText = 'Draw!'
+
+                this.setState({
+                    xIsNext: winner,
+                });
+            }
+
             this.setState({
                 squares: squares,
-                status: 'Winner: ' + winner,
+                status: winnerText,
                 isOver: true
             });
-            
+
             this.showModal();
-            
+
         } else {
             this.setState({
                 squares: squares,
@@ -118,6 +129,19 @@ function calculateWinner(squares) {
             return squares[a];
         }
     }
+
+    // check if draw
+    let squareCount = 0;
+
+    for (let i = 0; i < 9; i++) {
+        if (squares[i] !== null) {
+            squareCount += 1;
+        }
+    }
+
+    // draw
+    if (squareCount === 9)
+        return '-';
 
     return null;
 }
